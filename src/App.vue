@@ -93,7 +93,7 @@ body {
 .app-container {
   display: flex;
   min-height: 100vh;
-  padding: 20px;
+  padding: 15px 0 15px 15px;
   gap: 20px;
 }
 
@@ -110,12 +110,15 @@ body {
 /* 侧边栏样式 */
 .sidebar {
   width: var(--sidebar-width);
-  height: calc(100vh - 40px);
+  height: calc(100vh - 30px);
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-radius: var(--border-radius);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   display: flex;
   flex-direction: column;
   transition: width 0.3s ease;
@@ -212,8 +215,24 @@ body {
 /* 主内容区域样式 */
 .main-content {
   flex: 1;
-  overflow: hidden;
+  overflow: auto !important;
   display: flex;
+  padding: 20px;
+  height: calc(100vh - 30px) !important;
+  min-height: calc(100vh - 30px) !important;
+  max-height: calc(100vh - 30px) !important;
+  border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 确保RouterView占满容器 */
+.main-content > * {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
 }
 
 /* 便当盒风格布局 */

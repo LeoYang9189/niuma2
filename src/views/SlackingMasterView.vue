@@ -468,9 +468,11 @@ onMounted(() => {
 
 <style scoped>
 .slacking-container {
+  width: 100%; /* 使用100%宽度 */
+  height: 100%; /* 使用100%高度填充父容器 */
+  overflow: auto; /* 允许内容滚动 */
   padding: 20px;
   border-radius: var(--border-radius);
-  width: 1200px;
 }
 
 .bento-container {

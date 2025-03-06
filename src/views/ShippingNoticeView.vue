@@ -106,10 +106,12 @@ const filteredNotices = computed(() => {
 </template>
 
 <style scoped>
+/* 船司公告页面响应式布局 */
 .shipping-notice-container {
+  width: 100%;
+  max-width: 100%;
   padding: 20px;
   border-radius: var(--border-radius);
-  width: 1200px;
 }
 
 .notice-filter {
@@ -120,6 +122,15 @@ const filteredNotices = computed(() => {
   padding: 15px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* 响应式搜索框 */
+.search-box {
+  flex: 1;
+  min-width: 250px;
+  max-width: 100%;
 }
 
 .search-box input {
@@ -127,7 +138,13 @@ const filteredNotices = computed(() => {
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.3);
-  width: 250px;
+  width: 100%;
+}
+
+.filter-options {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .filter-options label {
@@ -140,21 +157,28 @@ const filteredNotices = computed(() => {
   margin-right: 8px;
 }
 
+/* 响应式公告列表 */
 .notices-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
+  width: 100%;
 }
 
 .notice-item {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   padding: 15px;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .notice-item:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .notice-item.important {
@@ -165,6 +189,7 @@ const filteredNotices = computed(() => {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .notice-company {
@@ -183,6 +208,7 @@ const filteredNotices = computed(() => {
   margin-bottom: 10px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .important-badge {
@@ -196,6 +222,7 @@ const filteredNotices = computed(() => {
 
 .notice-content {
   line-height: 1.5;
+  flex: 1;
 }
 
 .no-notices {
@@ -206,14 +233,47 @@ const filteredNotices = computed(() => {
   border-radius: 10px;
 }
 
+/* 媒体查询优化 */
 @media (max-width: 768px) {
   .notice-filter {
     flex-direction: column;
-    gap: 10px;
+    align-items: flex-start;
+    gap: 15px;
   }
   
-  .search-box input {
+  .search-box, .filter-options {
     width: 100%;
   }
+  
+  .notice-item {
+    min-height: auto;
+  }
+}
+
+/* 添加分页控制响应式设计 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.pagination-button {
+  padding: 8px 15px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pagination-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.pagination-button.active {
+  background: var(--accent-color);
+  color: white;
 }
 </style> 

@@ -1,0 +1,28 @@
+/* 重置浏览器默认样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 移除 #app 的最大宽度限制和居中效果 */
+#app {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-weight: normal;
+}
+
+/* 移除其他可能影响布局的样式 */
+@media (min-width: 1024px) {
+  body {
+    display: block;
+  }
+
+  #app {
+    display: block;
+    padding: 0;
+  }
+} 
